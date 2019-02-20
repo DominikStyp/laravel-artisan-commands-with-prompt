@@ -1,0 +1,40 @@
+{
+        "name": "dominikstyp/laravel-artisan-commands-with-prompt",
+        "minimum-stability": "dev",
+        "require": {
+            "laravel/laravel": ">=5.3",
+            "php": "~7.0"
+        },
+        "type": "library",
+        "license": "MIT",
+        "autoload": {
+            "psr-4": {
+                "DominikStyp\\LaravelArtisanCommandsWithPrompt\\": "src/"
+            }
+        },
+        
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "DominikStyp\\LaravelArtisanCommandsWithPrompt\\LaravelArtisanCommandsWithPromptServiceProvider"
+                ]
+            }
+        },
+        
+        "authors": [
+            {
+                "name": "DominikStyp",
+                "email": "dominik.stypula1@gmail.com"
+            }
+        ],
+        
+        "scripts": {
+            "post-install-cmd": [
+                "@php artisan vendor:publish --provider='\\DominikStyp\\LaravelArtisanCommandsWithPrompt\\LaravelArtisanCommandsWithPromptServiceProvider'"
+            ]
+        },
+        
+        "description": "Makes artisan commands more easy to use adding prompt options to them, so you don't need to always look at the documentation to use them",
+    
+        "keywords": ["laravel", "artisan", "commands", "with", "prompt"]
+    }

@@ -1,0 +1,12 @@
+<?php
+
+namespace {{namespace}};
+
+/**
+ * @property $id int
+ * 
+ */
+class {{className} extends AbstractModel
+{
+    public $table = '{{table}}';
+}
