@@ -1,7 +1,8 @@
 # Laravel Artisan Commands With Prompt
-Makes **AbstractModel** inside app/models directory, changes **make:model** command,to generate models which inherit from **AbstractModel**,
-and provides php artisan command to move your existing models to app/models directory and change their inheritance to **AbstractModel**.
-Thanks to that all your models will inherit from your custom class.<br />
+This plugin was created to save your time reading artisan commands documentation. <br />
+What it basically does, is to walk you through each command like ``` make:model ``` with series of questions, <br />
+So you won't need to remember each additional option of this command and you won't forget to automatically create migration or seeder <br />
+when you generate your model.
 
 # Installation
 ```
