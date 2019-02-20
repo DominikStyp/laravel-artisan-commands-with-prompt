@@ -17,6 +17,7 @@ class LaravelArtisanCommandsWithPromptServiceProvider extends ServiceProvider
         ]);
         $this->commands([
             \DominikStyp\LaravelArtisanCommandsWithPrompt\Console\Commands\CreateModel::class,
+            \DominikStyp\LaravelArtisanCommandsWithPrompt\Console\Commands\Migrate::class,
         ]); 
     }
 

@@ -35,3 +35,7 @@ For example:
 - Model should be a custom intermediate table model?
 After answering mainly "y" or "n" (Yes/No) it will generate what you need.<br />
 You don't need a documentation peek before generating model again.
+
+#List of commands
+- ``` with-prompt:make-model ```
+- ``` with-prompt:migrate ```
