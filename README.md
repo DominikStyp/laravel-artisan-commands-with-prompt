@@ -1,11 +1,11 @@
-# Laravel Model Abstractor
+# Laravel Artisan Commands With Prompt
 Makes **AbstractModel** inside app/models directory, changes **make:model** command,to generate models which inherit from **AbstractModel**,
 and provides php artisan command to move your existing models to app/models directory and change their inheritance to **AbstractModel**.
 Thanks to that all your models will inherit from your custom class.<br />
 
 # Installation
 ```
-composer require "dominikstyp/laravel-model-abstractor @dev" -vvv
+composer require "dominikstyp/laravel-artisan-commands-with-prompt @dev" -vvv
 php artisan vendor:publish --provider='\\DominikStyp\\LaravelModelAbstractor\\LaravelModelAbstractorServiceProvider'
 ```
 
@@ -16,67 +16,21 @@ For Laravel less than 5.5, you must add service provider to your **config/app.ph
 ```php
  'providers' => [
     // ...
-    DominikStyp\LaravelModelAbstractor\LaravelModelAbstractorServiceProvider::class,
+    DominikStyp\LaravelArtisanCommandsWithPrompt\LaravelArtisanCommandsWithPromptServiceProvider::class,
     // ...
   ],
 ```
 
 # Usage
-**Laravel Model Abstractor** provides new console tasks: <br />
-``` laravel-model-abstractor:list-models ``` Lists all your models which inherit from **Eloquent\Model** <br />
-``` laravel-model-abstractor:change-models-inheritance ``` Changes default models inheritance to **AbstractModel**, <br />
-and namespaces to **App\Models**, and moves them to **app\Models** directory.<br />
-WARNING! This doesn't affect **User** model, because it inherits from **Authenticatable**, so you must change it manually,<br />
-along with **config/auth.php - providers section**.<br />
-
-# Example
-Let's say you have a model file **app/Dummy1.php** which contains following code: <br />
-```php
-<?php
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Dummy1 extends Model
-{
-    //
-}
-```
-That model is generated automatically by ```php artisan make:model Dummy1``` command. <br />
-But you wish that your model (and others too) would inherit from your **AbstractModel** class like this: <br />
-```php
-<?php
-
-namespace App\Models;
-
-class Dummy1 extends AbstractModel
-{
-    //
-}
-```
-With your **AbstractModel** looking like this: <br />
-```php
-<?php
-namespace App\Models;
-
-/**
- * AbstractModel
- *
- */
-abstract class AbstractModel extends \Illuminate\Database\Eloquent\Model {
-    /** your custom code **/
-}
-```
-All you have to do is invoke ```php artisan laravel-model-abstractor:change-models-inheritance``` and you're done.
-# Additional Features
-If you'll look into **Models/Traits** directory you'll find **LocalScopes.php** trait, which is attached to **AbstractModel**.
-**LocalScopes** provides you following functionality for all your models which inherit from **AbstractModel** (look at example below):
-```php
-DummyModel1::where("something",1)->newest();
-DummyModel1::where("something",2)->oldest();
-// these are equivalent of
-DummyModel1::where("something",1)->orderBy("id","desc");
-DummyModel1::where("something",2)->orderBy("id","asc");
-```
-
+**Laravel Artisan Commands With Prompt** provides new console tasks: <br />
+``` with-prompt:make-model ``` Which guides you through original ``` make:model ``` command, asking you series of questions about possible options <br />
+For example:
+- Your model name ?
+- Generate all at once (a migration, factory, and resource controller) for the model?
+- Generate migration for this model?
+- Generate factory for this model?
+- Generate controller for this model?
+- Generate seeder class for this model?
+- Model should be a custom intermediate table model?
+After answering mainly "y" or "n" (Yes/No) it will generate what you need.<br />
+You don't need a documentation peek before generating model again.
